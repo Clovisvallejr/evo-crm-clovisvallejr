@@ -409,6 +409,7 @@ services:
       - EVOAI_CRM_API_TOKEN=    # Mesmo valor de EVOAI_CRM_API_TOKEN usado nos demais serviços
 
     ## 🔗 Integração CRM e Core
+      - EVO_AUTH_BASE_URL=http://evocrm_auth:3001
       - EVO_AI_CRM_URL=http://evocrm_crm:3000
       - CORE_SERVICE_URL=http://evocrm_core:5555/api/v1
 
