@@ -63,7 +63,7 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    command: bash -c "rm -f /rails/tmp/pids/server.pid && bundle exec rails db:prepare && bundle exec rails s -p 3001 -b 0.0.0.0"
+    command: bash -c "rm -f /rails/tmp/pids/server.pid && bundle install && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails s -p 3001 -b 0.0.0.0"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
       interval: 30s
@@ -86,7 +86,10 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
-    command: bash -c "bundle exec sidekiq"
+    # Disable inherited HTTP healthcheck — Sidekiq has no web server.
+    healthcheck:
+      disable: true
+    command: bash -c "bundle install && bundle exec sidekiq"
 
   # ---------------------------------------------------------------------------
   # CRM Service (Ruby / Rails) — Port 3000
@@ -155,7 +158,6 @@ services:
       BOT_RUNTIME_URL: http://evo-bot-runtime:8080
       BOT_RUNTIME_SECRET: ${BOT_RUNTIME_SECRET:-evo-bot-runtime-dev-secret}
       BOT_RUNTIME_POSTBACK_BASE_URL: http://evo-crm:3000
-      ACTIVE_STORAGE_URL: http://host.docker.internal:3000
     volumes:
       - ./evo-ai-crm-community:/app:delegated
       - crm_bundle:/usr/local/bundle
@@ -168,6 +170,9 @@ services:
         condition: service_healthy
       redis:
         condition: service_healthy
+    # Disable inherited HTTP healthcheck — Sidekiq has no web server.
+    healthcheck:
+      disable: true
     entrypoint: docker/entrypoints/rails.sh
     command: ["bundle", "exec", "sidekiq", "-C", "config/sidekiq.yml"]
 

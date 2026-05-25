@@ -1,4 +1,15 @@
 .env
 _evo*
 
-.claude/commands/*
+.claude
+.claude/
+.claude/*
+.agents/*
+CLAUDE.md
+
+# Sibling repos cloned locally but not registered in .gitmodules. They were
+# accidentally tracked as orphan gitlinks before; ignore the dirs so nobody
+# re-adds them with `git add`.
+evolution-hub
+evo-ai-docs/
+evo-flow/
