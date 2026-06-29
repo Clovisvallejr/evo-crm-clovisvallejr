@@ -76,8 +76,9 @@ export default function PublicQuotePage() {
         } else {
           setError("Erro ao carregar o orçamento. Tente novamente mais tarde.");
         }
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
   }, [token]);
 
   const handlePrint = () => {
