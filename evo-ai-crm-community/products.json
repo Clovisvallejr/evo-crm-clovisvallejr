@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Caixa Plástica Agrícola Vazada CP-94",
+    "category": "Caixas Agrícolas",
+    "description": "Ideal para transporte e armazenamento de frutas, legumes e verduras. Totalmente vazada para ventilação.",
+    "price": "45.90",
+    "image_url": "https://placehold.co/400x400/eeeeee/333333?text=Caixa+Agricola+Vazada"
+  },
+  {
+    "name": "Caixa Plástica Fechada Industrial CP-15",
+    "category": "Caixas Industriais",
+    "description": "Caixa plástica fechada de alta resistência. Utilizada para organização de peças e ferramentas na indústria.",
+    "price": "38.50",
+    "image_url": "https://placehold.co/400x400/eeeeee/333333?text=Caixa+Industrial+Fechada"
+  },
+  {
+    "name": "Caixa Plástica Organizadora com Tampa 50L",
+    "category": "Caixas Fechadas",
+    "description": "Caixa organizadora transparente ou opaca com tampa. Perfeita para uso doméstico ou estoque.",
+    "price": "55.00",
+    "image_url": "https://placehold.co/400x400/eeeeee/333333?text=Caixa+Organizadora+50L"
+  },
+  {
+    "name": "Estrado Plástico Modular 50x50cm",
+    "category": "Estrados Plásticos",
+    "description": "Estrado modular ideal para forrar pisos de câmaras frias, estoques e vestiários. Antiderrapante.",
+    "price": "18.90",
+    "image_url": "https://placehold.co/400x400/eeeeee/333333?text=Estrado+Plastico"
+  },
+  {
+    "name": "Caixa Plástica Supermercado Vazada",
+    "category": "Caixas Vazadas",
+    "description": "Caixa leve e resistente, amplamente utilizada em supermercados e feiras para exposição e transporte.",
+    "price": "22.90",
+    "image_url": "https://placehold.co/400x400/eeeeee/333333?text=Caixa+Supermercado"
+  }
+]
