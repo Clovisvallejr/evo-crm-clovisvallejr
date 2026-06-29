@@ -79,6 +79,8 @@ export default function PublicQuotePage() {
       } finally {
         setLoading(false);
       }
+    };
+    fetchData();
   }, [token]);
 
   const handlePrint = () => {
