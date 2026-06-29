@@ -1,0 +1,89 @@
+=> Booting Puma
+=> Rails 7.1.5.1 application starting in production 
+=> Run `bin/rails server --help` for more startup options
+I, [2026-06-27T02:10:09.264288 #1]  INFO -- : Oj JSON serializer initialized with :compat mode
+I, [2026-06-27T02:10:09.264917 #1]  INFO -- : OpenTelemetry tracing is disabled (OTEL_TRACES_ENABLED != true)
+I, [2026-06-27T02:10:17.066237 #1]  INFO -- : 🔧 BMS INIT: Initializing BMS email provider
+W, [2026-06-27T02:10:17.114038 #1]  WARN -- : ⚠️  BMS INIT: BMS_API_SECRET not found in GlobalConfig or ENV. BMS email provider will not be available.
+I, [2026-06-27T02:10:17.114098 #1]  INFO -- : 🔧 BMS INIT: BMS provider initialization complete
+I, [2026-06-27T02:10:17.114290 #1]  INFO -- : ContactCompanyListener registered successfully
+I, [2026-06-27T02:10:17.114552 #1]  INFO -- : EvoFlow listeners registered (contact, conversation, message, pipeline)
+I, [2026-06-27T02:10:17.114685 #1]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2026-06-27T02:10:17.221808 #1]  INFO -- : 📧 MAILER CONFIG: Using SMTP/Sendmail delivery method (MAILER_TYPE=smtp)
+Puma starting in single mode...
+* Puma version: 6.4.3 (ruby 3.4.4-p34) ("The Eagle of Durango")
+*  Min threads: 5
+*  Max threads: 5
+*  Environment: production
+*          PID: 1
+* Listening on http://0.0.0.0:3000
+Use Ctrl-C to stop
+I, [2026-06-27T02:10:46.601420 #1]  INFO -- : [98d30ec3-9750-4021-a133-da8a07bc1125] Started GET "/" for 200.148.121.118 at 2026-06-27 02:10:46 +0000
+I, [2026-06-27T02:10:46.608079 #1]  INFO -- : [98d30ec3-9750-4021-a133-da8a07bc1125] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:10:46.659394 #1]  INFO -- : [98d30ec3-9750-4021-a133-da8a07bc1125] Completed 500 Internal Server Error in 51ms (ActiveRecord: 13.9ms | Allocations: 4220)
+F, [2026-06-27T02:10:46.660380 #1] FATAL -- : [98d30ec3-9750-4021-a133-da8a07bc1125]   
+[98d30ec3-9750-4021-a133-da8a07bc1125] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[98d30ec3-9750-4021-a133-da8a07bc1125]   
+I, [2026-06-27T02:10:51.635176 #1]  INFO -- : [0910e9f1-fed8-45fd-919a-d00ac801ea0b] Started GET "/" for 200.148.121.118 at 2026-06-27 02:10:51 +0000
+I, [2026-06-27T02:10:51.639889 #1]  INFO -- : [0910e9f1-fed8-45fd-919a-d00ac801ea0b] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:10:51.643635 #1]  INFO -- : [0910e9f1-fed8-45fd-919a-d00ac801ea0b] Completed 500 Internal Server Error in 4ms (ActiveRecord: 1.8ms | Allocations: 411)
+F, [2026-06-27T02:10:51.644346 #1] FATAL -- : [0910e9f1-fed8-45fd-919a-d00ac801ea0b]   
+[0910e9f1-fed8-45fd-919a-d00ac801ea0b] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[0910e9f1-fed8-45fd-919a-d00ac801ea0b]   
+I, [2026-06-27T02:11:11.612153 #1]  INFO -- : [0c1837ae-795d-4d78-a073-0c31d5fb8986] Started GET "/" for 200.148.121.118 at 2026-06-27 02:11:11 +0000
+I, [2026-06-27T02:11:11.615098 #1]  INFO -- : [0c1837ae-795d-4d78-a073-0c31d5fb8986] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:11:11.617836 #1]  INFO -- : [0c1837ae-795d-4d78-a073-0c31d5fb8986] Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.4ms | Allocations: 410)
+F, [2026-06-27T02:11:11.618453 #1] FATAL -- : [0c1837ae-795d-4d78-a073-0c31d5fb8986]   
+[0c1837ae-795d-4d78-a073-0c31d5fb8986] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[0c1837ae-795d-4d78-a073-0c31d5fb8986]   
+I, [2026-06-27T02:12:39.100886 #1]  INFO -- : [848bc209-1ff0-42af-821a-33539d8c439f] Started GET "/" for 200.148.121.118 at 2026-06-27 02:12:39 +0000
+I, [2026-06-27T02:12:39.103838 #1]  INFO -- : [848bc209-1ff0-42af-821a-33539d8c439f] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:12:39.106951 #1]  INFO -- : [848bc209-1ff0-42af-821a-33539d8c439f] Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.6ms | Allocations: 410)
+F, [2026-06-27T02:12:39.107522 #1] FATAL -- : [848bc209-1ff0-42af-821a-33539d8c439f]   
+[848bc209-1ff0-42af-821a-33539d8c439f] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[848bc209-1ff0-42af-821a-33539d8c439f]   
+I, [2026-06-27T02:12:41.738662 #1]  INFO -- : [ea065588-0edf-4520-ad64-33184c7555fb] Started GET "/" for 200.148.121.118 at 2026-06-27 02:12:41 +0000
+I, [2026-06-27T02:12:41.742168 #1]  INFO -- : [ea065588-0edf-4520-ad64-33184c7555fb] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:12:41.744776 #1]  INFO -- : [ea065588-0edf-4520-ad64-33184c7555fb] Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.2ms | Allocations: 401)
+F, [2026-06-27T02:12:41.745323 #1] FATAL -- : [ea065588-0edf-4520-ad64-33184c7555fb]   
+[ea065588-0edf-4520-ad64-33184c7555fb] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[ea065588-0edf-4520-ad64-33184c7555fb]   
+I, [2026-06-27T02:12:48.905062 #1]  INFO -- : [2b0402a9-f379-4d61-abd4-2ca4e247c5e2] Started GET "/" for 200.148.121.118 at 2026-06-27 02:12:48 +0000
+I, [2026-06-27T02:12:48.909049 #1]  INFO -- : [2b0402a9-f379-4d61-abd4-2ca4e247c5e2] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:12:48.912492 #1]  INFO -- : [2b0402a9-f379-4d61-abd4-2ca4e247c5e2] Completed 500 Internal Server Error in 3ms (ActiveRecord: 1.4ms | Allocations: 401)
+F, [2026-06-27T02:12:48.913050 #1] FATAL -- : [2b0402a9-f379-4d61-abd4-2ca4e247c5e2]   
+[2b0402a9-f379-4d61-abd4-2ca4e247c5e2] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[2b0402a9-f379-4d61-abd4-2ca4e247c5e2]   
+I, [2026-06-27T02:12:58.145902 #1]  INFO -- : [ca355996-02c6-4255-891b-ec6cc93f051c] Started GET "/" for 200.148.121.118 at 2026-06-27 02:12:58 +0000
+I, [2026-06-27T02:12:58.149848 #1]  INFO -- : [ca355996-02c6-4255-891b-ec6cc93f051c] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:12:58.152368 #1]  INFO -- : [ca355996-02c6-4255-891b-ec6cc93f051c] Completed 500 Internal Server Error in 2ms (ActiveRecord: 1.5ms | Allocations: 401)
+F, [2026-06-27T02:12:58.152760 #1] FATAL -- : [ca355996-02c6-4255-891b-ec6cc93f051c]   
+[ca355996-02c6-4255-891b-ec6cc93f051c] ActiveRecord::StatementInvalid (PG::UndefinedTable: ERROR:  relation "installation_configs" does not exist
+LINE 10:  WHERE a.attrelid = '"installation_configs"'::regclass
+                             ^
+):
+[ca355996-02c6-4255-891b-ec6cc93f051c]   
+
+[sudo] password for administrator: Passing 'info' command to redis as is; administrative commands cannot be effectively namespaced and should be called on the redis connection directly; passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:474:in 'block in ActiveSupport::Cache::RedisCacheStore#supports_expire_nx?')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')

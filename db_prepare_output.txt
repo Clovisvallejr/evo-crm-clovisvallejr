@@ -1,0 +1,11 @@
+I, [2026-06-27T02:15:12.432203 #67]  INFO -- : Oj JSON serializer initialized with :compat mode
+I, [2026-06-27T02:15:12.432455 #67]  INFO -- : OpenTelemetry tracing is disabled (OTEL_TRACES_ENABLED != true)
+I, [2026-06-27T02:15:12.914250 #67]  INFO -- : 🔧 BMS INIT: Initializing BMS email provider
+W, [2026-06-27T02:15:12.932726 #67]  WARN -- : ⚠️  BMS INIT: BMS_API_SECRET not found in GlobalConfig or ENV. BMS email provider will not be available.
+I, [2026-06-27T02:15:12.932794 #67]  INFO -- : 🔧 BMS INIT: BMS provider initialization complete
+I, [2026-06-27T02:15:12.932925 #67]  INFO -- : ContactCompanyListener registered successfully
+I, [2026-06-27T02:15:12.935942 #67]  INFO -- : EvoFlow listeners registered (contact, conversation, message, pipeline)
+I, [2026-06-27T02:15:12.936401 #67]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2026-06-27T02:15:13.039528 #67]  INFO -- : 📧 MAILER CONFIG: Using SMTP/Sendmail delivery method (MAILER_TYPE=smtp)
+
+[sudo] password for administrator: 

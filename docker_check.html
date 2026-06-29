@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evo CRM - Docker Status Checker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 28px;
+        }
+        .service-group {
+            margin-bottom: 25px;
+        }
+        .service {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: #f5f5f5;
+            border-left: 4px solid #ccc;
+        }
+        .service.checking {
+            background: #fffacd;
+            border-left-color: #ffd700;
+        }
+        .service.ok {
+            background: #e8f5e9;
+            border-left-color: #4caf50;
+        }
+        .service.error {
+            background: #ffebee;
+            border-left-color: #f44336;
+        }
+        .status-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .checking .status-icon {
+            background: #ffd700;
+            animation: spin 1s linear infinite;
+        }
+        .ok .status-icon {
+            background: #4caf50;
+        }
+        .error .status-icon {
+            background: #f44336;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .service-name {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+        .status-text {
+            font-size: 12px;
+            color: #666;
+        }
+        .response-code {
+            background: white;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .ok .response-code {
+            color: #4caf50;
+        }
+        .error .response-code {
+            color: #f44336;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+        }
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            color: #1565c0;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐳 Evo CRM - Docker Status</h1>
+
+        <div class="info-box">
+            <strong>ℹ️ Informação:</strong> Este verificador testa conectividade com os serviços rodando localmente.
+            Os serviços devem estar iniciados em Docker para que os testes funcionem.
+        </div>
+
+        <div class="service-group">
+            <h2 style="font-size: 16px; margin-bottom: 10px; color: #666;">Serviços Principais</h2>
+
+            <div class="service checking" id="service-crm">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">CRM API</div>
+                <span class="status-text">http://localhost:3000</span>
+            </div>
+
+            <div class="service checking" id="service-auth">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">Auth Service</div>
+                <span class="status-text">http://localhost:3001</span>
+            </div>
+
+            <div class="service checking" id="service-processor">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">Processor (IA)</div>
+                <span class="status-text">http://localhost:8000</span>
+            </div>
+
+            <div class="service checking" id="service-core">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">Core Service</div>
+                <span class="status-text">http://localhost:5555</span>
+            </div>
+
+            <div class="service checking" id="service-bot">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">Bot Runtime</div>
+                <span class="status-text">http://localhost:8080</span>
+            </div>
+
+            <div class="service checking" id="service-frontend">
+                <div class="status-icon">⏳</div>
+                <div class="service-name">Frontend</div>
+                <span class="status-text">http://localhost:5173</span>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-primary" onclick="checkAllServices()">🔄 Verificar Status</button>
+            <button class="btn-secondary" onclick="location.reload()">↻ Recarregar</button>
+        </div>
+    </div>
+
+    <script>
+        const services = [
+            { id: 'service-crm', url: 'http://localhost:3000/health', name: 'CRM API' },
+            { id: 'service-auth', url: 'http://localhost:3001/health', name: 'Auth Service' },
+            { id: 'service-processor', url: 'http://localhost:8000/docs', name: 'Processor' },
+            { id: 'service-core', url: 'http://localhost:5555/health', name: 'Core Service' },
+            { id: 'service-bot', url: 'http://localhost:8080/health', name: 'Bot Runtime' },
+            { id: 'service-frontend', url: 'http://localhost:5173', name: 'Frontend' }
+        ];
+
+        async function testService(service) {
+            try {
+                const response = await fetch(service.url, {
+                    mode: 'no-cors',
+                    timeout: 5000
+                });
+
+                const element = document.getElementById(service.id);
+                element.classList.remove('checking');
+                element.classList.add('ok');
+                element.innerHTML = `
+                    <div class="status-icon">✓</div>
+                    <div class="service-name">${service.name}</div>
+                    <span class="status-text">${service.url}</span>
+                    <span class="response-code">200 OK</span>
+                `;
+                return true;
+            } catch (error) {
+                const element = document.getElementById(service.id);
+                element.classList.remove('checking');
+                element.classList.add('error');
+                element.innerHTML = `
+                    <div class="status-icon">✗</div>
+                    <div class="service-name">${service.name}</div>
+                    <span class="status-text">${service.url}</span>
+                    <span class="response-code">ERRO</span>
+                `;
+                return false;
+            }
+        }
+
+        function checkAllServices() {
+            services.forEach(service => {
+                testService(service);
+            });
+        }
+
+        // Auto-check when page loads
+        window.addEventListener('load', checkAllServices);
+    </script>
+</body>
+</html>

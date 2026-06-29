@@ -1,0 +1,54 @@
+@echo off
+setlocal enabledelayedexpansion
+cd /d "%~dp0"
+
+echo ============================================================
+echo SCRIPT DE DEPLOY PARA PRODUCAO (VPS)
+echo ============================================================
+echo.
+
+set /p commit_msg="Digite a mensagem do commit (Pressione Enter para usar 'Correcao do sistema de imagens e Docker'): "
+if "%commit_msg%"=="" set commit_msg=Correcao do sistema de imagens e Docker
+
+echo.
+echo.
+
+echo [PASSO 2/4] Preparando arquivos principais para commit...
+git add .
+echo.
+
+echo [PASSO 3/4] Fazendo commit e push do projeto principal para o GitHub (branch main)...
+git commit -m "!commit_msg!"
+git push origin main
+if errorlevel 1 (
+    echo ERRO: Falha ao enviar para o GitHub. Verifique sua conexao ou conflitos.
+    pause
+    exit /b 1
+)
+echo OK - Codigo enviado com sucesso!
+echo.
+
+echo ============================================================
+echo [PASSO 4/4] ATUALIZACAO NA VPS
+echo ============================================================
+echo O codigo mais recente ja esta no GitHub.
+echo.
+echo Para fazer o deploy automatico na VPS via SSH, pressione qualquer tecla.
+echo (Sera solicitada a senha da VPS se voce nao tiver chave SSH configurada)
+echo.
+pause
+
+echo.
+echo Conectando na VPS (clovis.valle@gmail.com@155.117.47.244)...
+echo OBS: Se pedir senha, digite a sua senha de clovis.valle@gmail.com.
+echo.
+ssh clovis.valle@gmail.com@155.117.47.244 "cd /root/imperio-crm/evo-crm-clovisvallejr_2 2>/dev/null || cd /root/evo-crm-community 2>/dev/null && git pull origin main && docker compose build evo-crm evo-processor evo-frontend && docker compose up -d evo-crm evo-processor evo-frontend"
+
+echo.
+echo ============================================================
+echo DEPLOY FINALIZADO!
+echo ============================================================
+echo Por favor, acesse o painel online para confirmar se as imagens
+echo estao carregando corretamente em producao.
+echo.
+pause

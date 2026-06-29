@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup: Pedidos (Shadcn UI Style)</title>
+    <script src="tailwindcss.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        card: 'hsl(var(--card))',
+                        'card-foreground': 'hsl(var(--card-foreground))',
+                        popover: 'hsl(var(--popover))',
+                        'popover-foreground': 'hsl(var(--popover-foreground))',
+                        primary: 'hsl(var(--primary))',
+                        'primary-foreground': 'hsl(var(--primary-foreground))',
+                        secondary: 'hsl(var(--secondary))',
+                        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+                        muted: 'hsl(var(--muted))',
+                        'muted-foreground': 'hsl(var(--muted-foreground))',
+                        accent: 'hsl(var(--accent))',
+                        'accent-foreground': 'hsl(var(--accent-foreground))',
+                        destructive: 'hsl(var(--destructive))',
+                        'destructive-foreground': 'hsl(var(--destructive-foreground))',
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                    },
+                    borderRadius: {
+                        lg: 'var(--radius)',
+                        md: 'calc(var(--radius) - 2px)',
+                        sm: 'calc(var(--radius) - 4px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 222.2 84% 4.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 222.2 84% 4.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 222.2 84% 4.9%;
+                --primary: 221 83% 53%; /* Blue primary to match CRM */
+                --primary-foreground: 210 40% 98%;
+                --secondary: 210 40% 96.1%;
+                --secondary-foreground: 222.2 47.4% 11.2%;
+                --muted: 210 40% 96.1%;
+                --muted-foreground: 215.4 16.3% 46.9%;
+                --accent: 210 40% 96.1%;
+                --accent-foreground: 222.2 47.4% 11.2%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 210 40% 98%;
+                --border: 214.3 31.8% 91.4%;
+                --input: 214.3 31.8% 91.4%;
+                --ring: 221 83% 53%;
+                --radius: 0.5rem;
+            }
+
+            .dark {
+                --background: 222.2 84% 4.9%;
+                --foreground: 210 40% 98%;
+                --card: 222.2 84% 4.9%;
+                --card-foreground: 210 40% 98%;
+                --popover: 222.2 84% 4.9%;
+                --popover-foreground: 210 40% 98%;
+                --primary: 217.2 91.2% 59.8%;
+                --primary-foreground: 222.2 47.4% 11.2%;
+                --secondary: 217.2 32.6% 17.5%;
+                --secondary-foreground: 210 40% 98%;
+                --muted: 217.2 32.6% 17.5%;
+                --muted-foreground: 215 20.2% 65.1%;
+                --accent: 217.2 32.6% 17.5%;
+                --accent-foreground: 210 40% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 210 40% 98%;
+                --border: 217.2 32.6% 17.5%;
+                --input: 217.2 32.6% 17.5%;
+                --ring: 224.3 76.3% 48%;
+            }
+
+            * {
+                @apply border-border;
+            }
+            body {
+                @apply bg-background text-foreground antialiased;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex text-sm">
+
+    <!-- Sidebar Mockup -->
+    <aside class="w-64 border-r bg-background flex flex-col hidden md:flex shrink-0">
+        <div class="h-14 flex items-center px-4 border-b">
+            <span class="text-base font-semibold tracking-tight">Império CRM</span>
+        </div>
+        <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+            <div class="px-2 py-2">
+                <h2 class="mb-2 px-2 text-xs font-semibold tracking-tight text-muted-foreground uppercase">Vendas</h2>
+                <div class="space-y-1">
+                    <a href="mockup_orcamentos.html" class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Orçamentos
+                    </a>
+                    <a href="mockup_pedidos.html" class="flex items-center gap-3 rounded-md bg-secondary text-secondary-foreground px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary/80">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        Pedidos
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        Clientes
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden bg-muted/20">
+        <!-- Header -->
+        <header class="h-14 bg-background border-b flex items-center justify-between px-6 shrink-0 shadow-sm">
+            <h1 class="text-sm font-semibold tracking-tight">Orçamentos e Pedidos</h1>
+            <div class="flex items-center space-x-4">
+                <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    Exportar Relatório
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="flex-1 overflow-auto p-6">
+            
+            <div class="flex flex-col space-y-6 max-w-7xl mx-auto">
+                <!-- Page Title -->
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight">Pedidos</h2>
+                    <p class="text-sm text-muted-foreground">Acompanhe os orçamentos que foram aprovados e viraram pedidos de venda.</p>
+                </div>
+
+                <!-- Metrics Cards -->
+                <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+                    <div class="rounded-xl border bg-card text-card-foreground shadow">
+                        <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                            <h3 class="tracking-tight text-sm font-medium">Aguardando Pgto</h3>
+                            <svg class="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <div class="text-2xl font-bold">12</div>
+                            <p class="text-xs text-muted-foreground">R$ 15.430,00</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl border bg-card text-card-foreground shadow">
+                        <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                            <h3 class="tracking-tight text-sm font-medium">Em Separação</h3>
+                            <svg class="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <div class="text-2xl font-bold">8</div>
+                            <p class="text-xs text-muted-foreground">Prontos para envio</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl border bg-card text-card-foreground shadow">
+                        <div class="p-6 flex flex-row items-center justify-between space-y-0 pb-2">
+                            <h3 class="tracking-tight text-sm font-medium">Enviados (Mês)</h3>
+                            <svg class="h-4 w-4 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <div class="text-2xl font-bold">45</div>
+                            <p class="text-xs text-emerald-500">+12% em relação ao mês anterior</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs (Shadcn style) -->
+                <div class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground w-fit">
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-foreground">Todos</button>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-foreground">Aguardando Pagamento</button>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-background text-foreground shadow">Em Separação</button>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-foreground">Enviados</button>
+                </div>
+
+                <!-- Table Container (Card) -->
+                <div class="rounded-xl border bg-card text-card-foreground shadow">
+                    <div class="p-0">
+                        <div class="relative w-full overflow-auto">
+                            <table class="w-full caption-bottom text-sm">
+                                <thead class="[&_tr]:border-b">
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Pedido</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Cliente</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Orçamento Base</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Pagamento</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Logística</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Valor</th>
+                                        <th class="h-10 px-4 text-right align-middle font-medium text-muted-foreground">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="[&_tr:last-child]:border-0">
+                                    <!-- Row 1 -->
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <td class="p-4 align-middle font-medium">#PED-5089</td>
+                                        <td class="p-4 align-middle">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Empresa ABC Ltda</span>
+                                                <span class="text-xs text-muted-foreground">São Paulo, SP</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle text-muted-foreground hover:text-primary cursor-pointer underline-offset-4 hover:underline">
+                                            #ORC-1042
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                                Aprovado / Pago
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                                                Em Separação
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle font-medium">R$ 4.500,00</td>
+                                        <td class="p-4 align-middle text-right">
+                                            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3" onclick="openOrderSheet()">
+                                                Gerenciar
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2 -->
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <td class="p-4 align-middle font-medium">#PED-5088</td>
+                                        <td class="p-4 align-middle">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Tech Solutions Inc</span>
+                                                <span class="text-xs text-muted-foreground">Rio de Janeiro, RJ</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle text-muted-foreground hover:text-primary cursor-pointer underline-offset-4 hover:underline">
+                                            #ORC-1039
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                Aguardando Pix
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-secondary text-secondary-foreground">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                                Pausado (Pgto)
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle font-medium">R$ 1.850,00</td>
+                                        <td class="p-4 align-middle text-right">
+                                            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3">
+                                                Gerenciar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Row 3 -->
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <td class="p-4 align-middle font-medium">#PED-5085</td>
+                                        <td class="p-4 align-middle">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">João da Silva</span>
+                                                <span class="text-xs text-muted-foreground">Curitiba, PR</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle text-muted-foreground hover:text-primary cursor-pointer underline-offset-4 hover:underline">
+                                            #ORC-1035
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border-emerald-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                                Aprovado / Pago
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                Enviado
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle font-medium">R$ 1.200,00</td>
+                                        <td class="p-4 align-middle text-right">
+                                            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3">
+                                                Gerenciar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Generate Payment Link Modal -->
+    <div id="sheetOverlay" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-200 hidden opacity-0 flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeOrderSheet()">
+        <!-- Order Details Modal Component -->
+        <div id="orderSheet" class="bg-background border rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] flex flex-col transition-all duration-200 scale-95 opacity-0 relative p-6">
+            <button class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary" onclick="closeOrderSheet()">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span class="sr-only">Close</span>
+            </button>
+            <div class="flex flex-col space-y-2 text-center sm:text-left shrink-0">
+                <h2 class="text-lg font-semibold text-foreground flex items-center">
+                    Pedido #PED-5089 - ATUALIZADO
+                    <div class="ml-3 inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-400 dark:border-amber-800/50">
+                        Em Separação
+                    </div>
+                </h2>
+            </div>
+            <p class="text-sm text-muted-foreground">Criado a partir do orçamento <a href="#" class="text-primary hover:underline">#ORC-1042</a> em 23/06/2026.</p>
+        </div>
+
+        <div class="flex-1 overflow-y-auto py-4 space-y-6">
+            
+            <!-- Timeline / Progress -->
+            <div class="space-y-2">
+                <h3 class="text-sm font-medium">Status do Pedido</h3>
+                <div class="flex items-center justify-between mt-4">
+                    <div class="flex flex-col items-center">
+                        <div class="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span class="text-xs font-medium mt-2">Aprovado</span>
+                    </div>
+                    <div class="flex-1 h-[2px] bg-primary mx-2"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="h-8 w-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span class="text-xs font-medium mt-2">Pago</span>
+                    </div>
+                    <div class="flex-1 h-[2px] bg-primary mx-2"></div>
+                    <div class="flex flex-col items-center">
+                        <div class="h-8 w-8 rounded-full border-2 border-primary text-primary flex items-center justify-center bg-background">
+                            <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                        </div>
+                        <span class="text-xs font-medium mt-2 text-primary">Em Separação</span>
+                    </div>
+                    <div class="flex-1 h-[2px] bg-muted mx-2"></div>
+                    <div class="flex flex-col items-center opacity-50">
+                        <div class="h-8 w-8 rounded-full border-2 border-muted text-muted-foreground flex items-center justify-center bg-background">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                        </div>
+                        <span class="text-xs font-medium mt-2">Enviado</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logistics and Billing -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="rounded-lg border bg-card p-4">
+                    <h3 class="font-medium text-sm mb-3 text-muted-foreground">Logística e Rastreio</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <p class="text-xs text-muted-foreground">Transportadora</p>
+                            <p class="text-sm font-medium">Jadlog (Expresso)</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted-foreground">Código de Rastreio</p>
+                            <div class="flex items-center space-x-2">
+                                <p class="text-sm font-medium">BR123456789JL</p>
+                                <button class="text-xs text-primary hover:underline">Rastrear</button>
+                            </div>
+                        </div>
+                        <div class="pt-2">
+                            <button class="inline-flex items-center justify-center rounded-md text-xs font-medium border bg-background shadow-sm hover:bg-accent h-7 px-3 w-full">
+                                Atualizar Status para "Enviado"
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-lg border bg-card p-4">
+                    <h3 class="font-medium text-sm mb-3 text-muted-foreground">Faturamento</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <p class="text-xs text-muted-foreground">Forma de Pagamento</p>
+                            <p class="text-sm font-medium">PIX</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted-foreground">Nota Fiscal (NF-e)</p>
+                            <p class="text-sm font-medium text-emerald-500 flex items-center">
+                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Emitida (Nº 001234)
+                            </p>
+                        </div>
+                        <div class="pt-2">
+                            <button class="inline-flex items-center justify-center rounded-md text-xs font-medium border bg-background shadow-sm hover:bg-accent h-7 px-3 w-full">
+                                Baixar XML/PDF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table (Read Only) -->
+            <div class="space-y-3">
+                <h3 class="text-sm font-medium">Produtos do Pedido</h3>
+                <div class="rounded-md border">
+                    <table class="w-full caption-bottom text-sm">
+                        <thead class="[&_tr]:border-b bg-muted/50">
+                            <tr class="border-b transition-colors hover:bg-muted/50">
+                                <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Produto</th>
+                                <th class="h-10 px-4 text-center align-middle font-medium text-muted-foreground">Qtd</th>
+                                <th class="h-10 px-4 text-right align-middle font-medium text-muted-foreground">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="[&_tr:last-child]:border-0">
+                            <tr class="border-b transition-colors hover:bg-muted/50">
+                                <td class="p-4 align-middle">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden border">
+                                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Produto 1" class="object-cover h-full w-full">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-medium">Headset Pro Wireless</span>
+                                            <span class="text-xs text-muted-foreground">SKU: HW-001</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-4 align-middle text-center">10</td>
+                                <td class="p-4 align-middle text-right font-medium">R$ 4.000,00</td>
+                            </tr>
+                            <tr class="border-b transition-colors hover:bg-muted/50">
+                                <td class="p-4 align-middle">
+                                    <div class="flex flex-col">
+                                        <span class="font-medium">Setup Inicial + Treinamento</span>
+                                        <span class="text-xs text-muted-foreground">Serviço</span>
+                                    </div>
+                                </td>
+                                <td class="p-4 align-middle text-center">1</td>
+                                <td class="p-4 align-middle text-right font-medium">R$ 415,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex justify-end pt-2 pr-4">
+                    <div class="text-right">
+                        <div class="text-sm text-muted-foreground mb-1">
+                            <span class="mr-4">Frete:</span>
+                            <span>R$ 85,00</span>
+                        </div>
+                        <div class="text-lg font-bold pt-2 border-t">
+                            <span class="mr-4">Total Pago:</span>
+                            <span class="text-primary">R$ 4.500,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openOrderSheet() {
+            document.getElementById('sheetOverlay').classList.remove('hidden');
+            setTimeout(() => {
+                document.getElementById('sheetOverlay').classList.add('opacity-100');
+                document.getElementById('orderSheet').classList.remove('scale-95', 'opacity-0');
+                document.getElementById('orderSheet').classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeOrderSheet() {
+            document.getElementById('orderSheet').classList.remove('scale-100', 'opacity-100');
+            document.getElementById('orderSheet').classList.add('scale-95', 'opacity-0');
+            document.getElementById('sheetOverlay').classList.remove('opacity-100');
+            setTimeout(() => {
+                document.getElementById('sheetOverlay').classList.add('hidden');
+            }, 300);
+        }
+    </script>
+</body>
+</html>

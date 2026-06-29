@@ -1,0 +1,15 @@
+EXECUTE ISTO AGORA:
+
+1. Clique DUAS VEZES neste arquivo:
+   SETUP.bat
+
+Pronto! Tudo vai automatico.
+
+Quando terminar (vai levar uns 4 minutos):
+- Abra o navegador: http://localhost:5173
+- Login: admin@clovisvallejr.com / Imperio@123
+- Va para: /customer/quotes
+- Clique: Novo Orcamento
+- Voce vera o botao VISUALIZAR
+
+FIM!

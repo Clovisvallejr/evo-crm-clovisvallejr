@@ -1,0 +1,87 @@
+============================================================
+COMO EXECUTAR O SETUP COMPLETO
+============================================================
+
+SITUACAO ATUAL:
+- Você reverteu para estado anterior (sem minhas mudanças quebradas)
+- Agora vou fazer setup COMPLETO e correto
+
+PASSO 1: EXECUTAR O SCRIPT
+============================================================
+1. Abra PowerShell OU CMD
+2. Va para a pasta do projeto:
+
+   cd C:\xampp\htdocs\imperio-crm\evo-crm-clovisvallejr_2
+
+3. Execute o script (escolha UM):
+
+   OPCAO A - Via PowerShell (RECOMENDADO):
+   .\SETUP_COMPLETO.bat
+
+   OPCAO B - Via CMD:
+   SETUP_COMPLETO.bat
+
+4. AGUARDE! O script vai:
+   - Parar todos os containers
+   - Limpar tudo (docker compose down -v)
+   - Limpar node_modules
+   - Fazer npm install
+   - Fazer npm run build (IMPORTANTE - compila tudo)
+   - Fazer docker compose up -d
+   - Aguardar containers ficarem prontos (3-5 minutos)
+
+5. Quando terminar, vera:
+   "SETUP COMPLETO!"
+   "Acesse: http://localhost:5173"
+
+
+PASSO 2: VERIFICAR SE FUNCIONOU
+============================================================
+Abra navegador em: http://localhost:5173
+
+Se nao carregar:
+1. Aguarde mais 2-3 minutos (primeiro boot demora)
+2. Abra Developer Tools (F12)
+3. Limpe cache (Ctrl+Shift+Del)
+4. Recarre (Ctrl+F5)
+5. Me diga exatamente o que ve
+
+
+PASSO 3: AVISAR QUANDO ESTIVER UP
+============================================================
+Quando o Docker estiver funcionando corretamente:
+- Diga: "Docker up e funcionando"
+- Diga se consegue fazer login
+- Diga se consegue acessar Orçamentos e Pedidos
+
+Entao eu vou fazer as NOVAS FUNCIONALIDADES CORRETAMENTE.
+
+
+COMANDOS UTEIS:
+============================================================
+
+Ver status do Docker:
+docker compose ps
+
+Ver logs em tempo real:
+docker compose logs -f
+
+Ver logs de um container especifico:
+docker compose logs -f evo-frontend
+
+Parar Docker (se precisar):
+docker compose down
+
+Iniciar Docker de novo (apos down):
+docker compose up -d
+
+
+IMPORTANTE:
+============================================================
+- NAO interrompa o script no meio
+- Deixe completar do inicio ao fim
+- A primeira execucao pode levar 5-10 minutos
+- Apos "SETUP COMPLETO!" pode fechar a janela
+
+
+============================================================

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark"> <!-- Remove 'dark' class for light mode -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mockup: Orçamentos & Pedidos (Shadcn UI Style)</title>
+    <script src="tailwindcss.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        background: 'hsl(var(--background))',
+                        foreground: 'hsl(var(--foreground))',
+                        card: 'hsl(var(--card))',
+                        'card-foreground': 'hsl(var(--card-foreground))',
+                        popover: 'hsl(var(--popover))',
+                        'popover-foreground': 'hsl(var(--popover-foreground))',
+                        primary: 'hsl(var(--primary))',
+                        'primary-foreground': 'hsl(var(--primary-foreground))',
+                        secondary: 'hsl(var(--secondary))',
+                        'secondary-foreground': 'hsl(var(--secondary-foreground))',
+                        muted: 'hsl(var(--muted))',
+                        'muted-foreground': 'hsl(var(--muted-foreground))',
+                        accent: 'hsl(var(--accent))',
+                        'accent-foreground': 'hsl(var(--accent-foreground))',
+                        destructive: 'hsl(var(--destructive))',
+                        'destructive-foreground': 'hsl(var(--destructive-foreground))',
+                        border: 'hsl(var(--border))',
+                        input: 'hsl(var(--input))',
+                        ring: 'hsl(var(--ring))',
+                    },
+                    borderRadius: {
+                        lg: 'var(--radius)',
+                        md: 'calc(var(--radius) - 2px)',
+                        sm: 'calc(var(--radius) - 4px)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            :root {
+                --background: 0 0% 100%;
+                --foreground: 222.2 84% 4.9%;
+                --card: 0 0% 100%;
+                --card-foreground: 222.2 84% 4.9%;
+                --popover: 0 0% 100%;
+                --popover-foreground: 222.2 84% 4.9%;
+                --primary: 221 83% 53%; /* Blue primary to match CRM */
+                --primary-foreground: 210 40% 98%;
+                --secondary: 210 40% 96.1%;
+                --secondary-foreground: 222.2 47.4% 11.2%;
+                --muted: 210 40% 96.1%;
+                --muted-foreground: 215.4 16.3% 46.9%;
+                --accent: 210 40% 96.1%;
+                --accent-foreground: 222.2 47.4% 11.2%;
+                --destructive: 0 84.2% 60.2%;
+                --destructive-foreground: 210 40% 98%;
+                --border: 214.3 31.8% 91.4%;
+                --input: 214.3 31.8% 91.4%;
+                --ring: 221 83% 53%;
+                --radius: 0.5rem;
+            }
+
+            .dark {
+                --background: 222.2 84% 4.9%;
+                --foreground: 210 40% 98%;
+                --card: 222.2 84% 4.9%;
+                --card-foreground: 210 40% 98%;
+                --popover: 222.2 84% 4.9%;
+                --popover-foreground: 210 40% 98%;
+                --primary: 217.2 91.2% 59.8%;
+                --primary-foreground: 222.2 47.4% 11.2%;
+                --secondary: 217.2 32.6% 17.5%;
+                --secondary-foreground: 210 40% 98%;
+                --muted: 217.2 32.6% 17.5%;
+                --muted-foreground: 215 20.2% 65.1%;
+                --accent: 217.2 32.6% 17.5%;
+                --accent-foreground: 210 40% 98%;
+                --destructive: 0 62.8% 30.6%;
+                --destructive-foreground: 210 40% 98%;
+                --border: 217.2 32.6% 17.5%;
+                --input: 217.2 32.6% 17.5%;
+                --ring: 224.3 76.3% 48%;
+            }
+
+            * {
+                @apply border-border;
+            }
+            body {
+                @apply bg-background text-foreground antialiased;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex text-sm">
+
+    <!-- Sidebar Mockup (Shadcn style) -->
+    <aside class="w-64 border-r bg-background flex flex-col hidden md:flex shrink-0">
+        <div class="h-14 flex items-center px-4 border-b">
+            <span class="text-base font-semibold tracking-tight">Império CRM</span>
+        </div>
+        <nav class="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+            <div class="px-2 py-2">
+                <h2 class="mb-2 px-2 text-xs font-semibold tracking-tight text-muted-foreground uppercase">Vendas</h2>
+                <div class="space-y-1">
+                    <a href="mockup_orcamentos.html" class="flex items-center gap-3 rounded-md bg-secondary text-secondary-foreground px-3 py-2 text-sm font-medium transition-colors hover:bg-secondary/80">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Orçamentos
+                    </a>
+                    <a href="mockup_pedidos.html" class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        Pedidos
+                    </a>
+                    <a href="#" class="flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground hover:bg-secondary/50 hover:text-foreground transition-colors">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        Clientes
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden bg-muted/20">
+        <!-- Header -->
+        <header class="h-14 bg-background border-b flex items-center justify-between px-6 shrink-0 shadow-sm">
+            <h1 class="text-sm font-semibold tracking-tight">Orçamentos e Pedidos</h1>
+            <div class="flex items-center space-x-4">
+                <button onclick="openNewQuoteModal()" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    Novo Orçamento
+                </button>
+            </div>
+        </header>
+
+        <!-- Page Content -->
+        <div class="flex-1 overflow-auto p-6">
+            
+            <div class="flex flex-col space-y-6 max-w-7xl mx-auto">
+                <!-- Page Title -->
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight">Orçamentos</h2>
+                    <p class="text-sm text-muted-foreground">Gerencie os orçamentos gerados pela IA ou criados manualmente.</p>
+                </div>
+
+                <!-- Tabs (Shadcn style) -->
+                <div class="inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground w-fit">
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-background text-foreground shadow">Aguardando Aprovação (2)</button>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-foreground">Enviados (5)</button>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:text-foreground">Aprovados / Pedidos (12)</button>
+                </div>
+
+                <!-- Table Container (Card) -->
+                <div class="rounded-xl border bg-card text-card-foreground shadow">
+                    <div class="p-0">
+                        <div class="relative w-full overflow-auto">
+                            <table class="w-full caption-bottom text-sm">
+                                <thead class="[&_tr]:border-b">
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Orçamento</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Cliente</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Origem</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Status</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Valor Total</th>
+                                        <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Data</th>
+                                        <th class="h-10 px-4 text-right align-middle font-medium text-muted-foreground">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="[&_tr:last-child]:border-0">
+                                    <!-- Row 1 -->
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <td class="p-4 align-middle">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden border">
+                                                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Thumbnail" class="object-cover h-full w-full">
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <span class="font-medium">#ORC-1042</span>
+                                                    <span class="text-xs text-muted-foreground">Headset Pro...</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">Empresa ABC Ltda</span>
+                                                <span class="text-xs text-muted-foreground">contato@abc.com.br</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                IA (WhatsApp)
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-secondary text-secondary-foreground">
+                                                Rascunho
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle font-medium">R$ 4.500,00</td>
+                                        <td class="p-4 align-middle text-muted-foreground">Há 10 min</td>
+                                        <td class="p-4 align-middle text-right">
+                                            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3" onclick="document.getElementById('quoteSheet').classList.remove('scale-95', 'opacity-0'); document.getElementById('quoteSheet').classList.add('scale-100', 'opacity-100'); document.getElementById('sheetOverlay').classList.remove('hidden'); document.getElementById('sheetOverlay').classList.add('opacity-100')">
+                                                Revisar
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2 -->
+                                    <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                        <td class="p-4 align-middle">
+                                            <div class="flex items-center space-x-3">
+                                                <div class="h-10 w-10 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden border">
+                                                    <svg class="h-5 w-5 text-muted-foreground/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                </div>
+                                                <div class="flex flex-col">
+                                                    <span class="font-medium">#ORC-1041</span>
+                                                    <span class="text-xs text-muted-foreground">Serviços</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="flex flex-col">
+                                                <span class="font-medium">João da Silva</span>
+                                                <span class="text-xs text-muted-foreground">+55 11 99999-9999</span>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800/50">
+                                                <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                                IA (Instagram)
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle">
+                                            <div class="inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-secondary text-secondary-foreground">
+                                                Rascunho
+                                            </div>
+                                        </td>
+                                        <td class="p-4 align-middle font-medium">R$ 1.200,00</td>
+                                        <td class="p-4 align-middle text-muted-foreground">Há 2 horas</td>
+                                        <td class="p-4 align-middle text-right">
+                                            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-8 px-3" onclick="document.getElementById('quoteSheet').classList.remove('scale-95', 'opacity-0'); document.getElementById('quoteSheet').classList.add('scale-100', 'opacity-100'); document.getElementById('sheetOverlay').classList.remove('hidden'); document.getElementById('sheetOverlay').classList.add('opacity-100')">
+                                                Revisar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Overlay Background -->
+    <div id="sheetOverlay" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-200 hidden opacity-0 flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeSheet()">
+        <!-- Revisar Orçamento Modal Component -->
+        <div id="quoteSheet" class="bg-background border rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] flex flex-col transition-all duration-200 scale-95 opacity-0 relative p-6">
+            <button class="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary" onclick="closeSheet()">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <span class="sr-only">Close</span>
+            </button>
+            <div class="flex flex-col space-y-2 text-center sm:text-left shrink-0">
+                <h2 class="text-lg font-semibold text-foreground flex items-center">
+                    Revisar Orçamento - ATUALIZADO
+                    <div class="ml-3 inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-800/50">
+                        <svg class="mr-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        Rascunho da IA
+                    </div>
+                </h2>
+                <p class="text-sm text-muted-foreground">Gerado a partir da conversa com Empresa ABC Ltda (#ORC-1042).</p>
+            </div>
+
+        <div class="flex-1 overflow-y-auto py-4 space-y-6">
+            <!-- Info Cards Grid: Seller, Customer, Logistics -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Customer Info -->
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-4">
+                    <h3 class="font-medium text-sm mb-3 flex items-center text-muted-foreground">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        Dados do Cliente
+                    </h3>
+                    <div class="space-y-1">
+                        <p class="font-medium">Empresa ABC Ltda</p>
+                        <p class="text-xs text-muted-foreground">CNPJ: 12.345.678/0001-90</p>
+                        <p class="text-xs text-muted-foreground">contato@abc.com.br</p>
+                        <p class="text-xs text-muted-foreground">+55 11 98888-7777</p>
+                    </div>
+                </div>
+
+                <!-- Seller Info -->
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-4">
+                    <h3 class="font-medium text-sm mb-3 flex items-center text-muted-foreground">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        Vendedor Responsável
+                    </h3>
+                    <div class="flex items-center space-x-3">
+                        <div class="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                            CA
+                        </div>
+                        <div class="space-y-1">
+                            <p class="font-medium text-sm">Carlos Aguiar</p>
+                            <p class="text-xs text-muted-foreground">Agente de Vendas (IA)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Logistics Info -->
+                <div class="rounded-lg border bg-card text-card-foreground shadow-sm p-4 md:col-span-2">
+                    <h3 class="font-medium text-sm mb-3 flex items-center text-muted-foreground">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                        Logística e Entrega
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-xs text-muted-foreground mb-1">Endereço de Entrega</p>
+                            <p class="text-sm font-medium">Av. Paulista, 1000 - Bela Vista</p>
+                            <p class="text-sm text-muted-foreground">São Paulo, SP - 01310-100</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-muted-foreground mb-1">Método de Envio</p>
+                            <p class="text-sm font-medium">Transportadora Jadlog (Expresso)</p>
+                            <p class="text-sm text-emerald-500 font-medium">Frete: R$ 85,00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Table -->
+            <div class="space-y-3">
+                <h3 class="text-sm font-medium">Produtos do Orçamento</h3>
+                <div class="rounded-md border">
+                    <table class="w-full caption-bottom text-sm">
+                        <thead class="[&_tr]:border-b bg-muted/50">
+                            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                <th class="h-10 px-4 text-left align-middle font-medium text-muted-foreground">Produto</th>
+                                <th class="h-10 px-4 text-center align-middle font-medium text-muted-foreground">Qtd</th>
+                                <th class="h-10 px-4 text-right align-middle font-medium text-muted-foreground">Valor Unit.</th>
+                                <th class="h-10 px-4 text-right align-middle font-medium text-muted-foreground">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody class="[&_tr:last-child]:border-0">
+                            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted cursor-pointer" onclick="openProductDetailsModal()">
+                                <td class="p-4 align-middle">
+                                    <div class="flex items-center space-x-3 group">
+                                        <div class="h-12 w-12 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden border transition-all group-hover:ring-2 group-hover:ring-primary">
+                                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&q=80" alt="Produto 1" class="object-cover h-full w-full">
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-medium group-hover:text-primary transition-colors">Headset Pro Wireless</span>
+                                            <span class="text-xs text-muted-foreground">SKU: HW-001 <span class="text-primary/70 ml-1 text-[10px]">(Clique para ver/editar)</span></span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-4 align-middle text-center">10</td>
+                                <td class="p-4 align-middle text-right">R$ 400,00</td>
+                                <td class="p-4 align-middle text-right font-medium">R$ 4.000,00</td>
+                            </tr>
+                            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                <td class="p-4 align-middle">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="h-12 w-12 rounded bg-muted flex items-center justify-center shrink-0 overflow-hidden border">
+                                            <svg class="h-6 w-6 text-muted-foreground/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                        </div>
+                                        <div class="flex flex-col">
+                                            <span class="font-medium">Setup Inicial + Treinamento</span>
+                                            <span class="text-xs text-muted-foreground">Serviço</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-4 align-middle text-center">1</td>
+                                <td class="p-4 align-middle text-right">R$ 415,00</td>
+                                <td class="p-4 align-middle text-right font-medium">R$ 415,00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex justify-end pt-2 pr-4">
+                    <div class="text-right">
+                        <div class="text-sm text-muted-foreground mb-1">
+                            <span class="mr-4">Subtotal:</span>
+                            <span>R$ 4.415,00</span>
+                        </div>
+                        <div class="text-sm text-muted-foreground mb-2">
+                            <span class="mr-4">Frete:</span>
+                            <span>R$ 85,00</span>
+                        </div>
+                        <div class="text-lg font-bold pt-2 border-t">
+                            <span class="mr-4">Total:</span>
+                            <span class="text-primary">R$ 4.500,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 shrink-0 pt-4 border-t">
+            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mt-2 sm:mt-0" onclick="closeSheet()">Cancelar</button>
+            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2">Editar Itens</button>
+            <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" onclick="alert('Enviado e aguardando aprovação!'); closeSheet()">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                Aprovar & Enviar Orçamento
+            </button>
+        </div>
+    </div>
+
+    <!-- New Quote Modal Overlay -->
+    <div id="newQuoteOverlay" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-200 hidden opacity-0 flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeNewQuoteModal()">
+        
+        <!-- Modal Content (Shadcn Dialog Style) -->
+        <div id="newQuoteModal" class="bg-background border rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] flex flex-col transition-all duration-200 scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="flex flex-col space-y-1.5 p-6 border-b shrink-0">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold leading-none tracking-tight">Criar Novo Orçamento</h2>
+                    <button class="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none" onclick="closeNewQuoteModal()">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="sr-only">Fechar</span>
+                    </button>
+                </div>
+                <p class="text-sm text-muted-foreground">Preencha os dados abaixo para gerar um novo orçamento manualmente.</p>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-8">
+                <!-- Section 1: Customer & Seller -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Cliente</label>
+                        <div class="relative">
+                            <select class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none">
+                                <option value="" disabled selected>Selecione um cliente...</option>
+                                <option>Empresa ABC Ltda</option>
+                                <option>João da Silva</option>
+                            </select>
+                            <svg class="absolute right-3 top-3 h-4 w-4 opacity-50 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Vendedor Responsável</label>
+                        <div class="relative">
+                            <select class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 appearance-none">
+                                <option>Você (Usuário Atual)</option>
+                                <option>Carlos Aguiar (IA)</option>
+                            </select>
+                            <svg class="absolute right-3 top-3 h-4 w-4 opacity-50 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 2: Products -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Produtos / Serviços</label>
+                        <button type="button" class="inline-flex items-center justify-center rounded-md text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-7 px-3">
+                            + Adicionar Item
+                        </button>
+                    </div>
+                    
+                    <div class="rounded-md border">
+                        <table class="w-full caption-bottom text-sm">
+                            <thead class="[&_tr]:border-b bg-muted/50">
+                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                    <th class="h-9 px-4 text-left align-middle font-medium text-muted-foreground w-1/2">Item</th>
+                                    <th class="h-9 px-4 text-center align-middle font-medium text-muted-foreground w-20">Qtd</th>
+                                    <th class="h-9 px-4 text-right align-middle font-medium text-muted-foreground">Valor Unit.</th>
+                                    <th class="h-9 px-4 text-right align-middle font-medium text-muted-foreground w-12"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="[&_tr:last-child]:border-0">
+                                <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                                    <td class="p-2 align-middle">
+                                        <select class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                            <option>Licença CRM Premium</option>
+                                        </select>
+                                    </td>
+                                    <td class="p-2 align-middle">
+                                        <input type="number" value="1" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors text-center focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                    </td>
+                                    <td class="p-2 align-middle">
+                                        <input type="text" value="R$ 250,00" class="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors text-right focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                                    </td>
+                                    <td class="p-2 align-middle text-right">
+                                        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:text-destructive h-8 w-8">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Section 3: Logistics & Notes -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-4 border rounded-lg p-4 bg-muted/20">
+                        <h3 class="text-sm font-medium flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                            Logística de Entrega
+                        </h3>
+                        <div class="space-y-2">
+                            <label class="text-xs font-medium text-muted-foreground">Endereço de Entrega (Opcional)</label>
+                            <input type="text" placeholder="Rua, Número, Bairro, CEP" class="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="text-xs font-medium text-muted-foreground">Método</label>
+                                <select class="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring appearance-none">
+                                    <option>Nenhum (Digital)</option>
+                                    <option>Correios (PAC)</option>
+                                    <option>Transportadora</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-medium text-muted-foreground">Custo Frete</label>
+                                <input type="text" value="R$ 0,00" class="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="space-y-2 h-full flex flex-col">
+                            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Observações Internas</label>
+                            <textarea class="flex min-h-[80px] flex-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Anotações visíveis apenas para a equipe..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 p-6 border-t bg-muted/10 shrink-0">
+                <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mt-2 sm:mt-0" onclick="closeNewQuoteModal()">Cancelar</button>
+                <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2 mt-2 sm:mt-0">Salvar Rascunho</button>
+                <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground shadow hover:bg-primary/90 h-9 px-4 py-2" onclick="closeNewQuoteModal()">Criar Orçamento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details/Edit Modal Overlay -->
+    <div id="productDetailsOverlay" class="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-all duration-200 hidden opacity-0 flex items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeProductDetailsModal()">
+        
+        <div id="productDetailsModal" class="bg-background border rounded-lg shadow-lg w-full max-w-2xl max-h-[90vh] flex flex-col transition-all duration-200 scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="flex flex-col space-y-1.5 p-6 border-b shrink-0">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold leading-none tracking-tight">Detalhes do Produto</h2>
+                    <button class="rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none" onclick="closeProductDetailsModal()">
+                        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        <span class="sr-only">Fechar</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body (Scrollable) -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-6">
+                <!-- Image Gallery -->
+                <div class="space-y-3">
+                    <h3 class="text-sm font-medium">Imagens do Produto</h3>
+                    <div class="flex gap-4 overflow-x-auto pb-2 snap-x">
+                        <div class="w-48 h-48 rounded-lg border bg-muted shrink-0 snap-center overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-xs font-medium bg-black/50 px-2 py-1 rounded">Ver Maior</span>
+                            </div>
+                        </div>
+                        <div class="w-48 h-48 rounded-lg border bg-muted shrink-0 snap-center overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?w=400&q=80" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-xs font-medium bg-black/50 px-2 py-1 rounded">Ver Maior</span>
+                            </div>
+                        </div>
+                        <div class="w-48 h-48 rounded-lg border bg-muted shrink-0 snap-center overflow-hidden relative group cursor-pointer">
+                            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80" class="object-cover w-full h-full">
+                            <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                <span class="text-white text-xs font-medium bg-black/50 px-2 py-1 rounded">Ver Maior</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Edit Form -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="space-y-2 sm:col-span-2">
+                        <label class="text-sm font-medium leading-none">Nome do Produto</label>
+                        <input type="text" value="Headset Pro Wireless" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium leading-none">SKU</label>
+                        <input type="text" value="HW-001" disabled class="flex h-10 w-full rounded-md border border-input bg-muted px-3 py-2 text-sm opacity-70">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium leading-none">Valor Unitário</label>
+                        <input type="text" value="R$ 400,00" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
+                    </div>
+                    <div class="space-y-2 sm:col-span-2">
+                        <label class="text-sm font-medium leading-none">Descrição / Especificações</label>
+                        <textarea class="flex min-h-[100px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm">Headset com cancelamento de ruído ativo, bateria com 30 horas de duração, bluetooth 5.0. Acompanha case de transporte rígida.</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 p-6 border-t bg-muted/10 shrink-0">
+                <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-input bg-background hover:bg-accent h-9 px-4 py-2 mt-2 sm:mt-0" onclick="closeProductDetailsModal()">Cancelar</button>
+                <button type="button" class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors bg-primary text-primary-foreground hover:bg-primary/90 h-9 px-4 py-2" onclick="closeProductDetailsModal()">Salvar Alterações</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function closeSheet() {
+            document.getElementById('quoteSheet').classList.remove('scale-100', 'opacity-100'); document.getElementById('quoteSheet').classList.add('scale-95', 'opacity-0');
+            document.getElementById('sheetOverlay').classList.remove('opacity-100');
+            setTimeout(() => {
+                document.getElementById('sheetOverlay').classList.add('hidden');
+            }, 300);
+        }
+
+        function openNewQuoteModal() {
+            const overlay = document.getElementById('newQuoteOverlay');
+            const modal = document.getElementById('newQuoteModal');
+            
+            overlay.classList.remove('hidden');
+            // Small delay to allow CSS transition to trigger after removing hidden
+            setTimeout(() => {
+                overlay.classList.add('opacity-100');
+                modal.classList.remove('scale-95', 'opacity-0');
+                modal.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeNewQuoteModal() {
+            const overlay = document.getElementById('newQuoteOverlay');
+            const modal = document.getElementById('newQuoteModal');
+            
+            overlay.classList.remove('opacity-100');
+            modal.classList.remove('scale-100', 'opacity-100');
+            modal.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 200); // Matches duration-200
+        }
+
+        function openProductDetailsModal() {
+            const overlay = document.getElementById('productDetailsOverlay');
+            const modal = document.getElementById('productDetailsModal');
+            
+            overlay.classList.remove('hidden');
+            setTimeout(() => {
+                overlay.classList.add('opacity-100');
+                modal.classList.remove('scale-95', 'opacity-0');
+                modal.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeProductDetailsModal() {
+            const overlay = document.getElementById('productDetailsOverlay');
+            const modal = document.getElementById('productDetailsModal');
+            
+            overlay.classList.remove('opacity-100');
+            modal.classList.remove('scale-100', 'opacity-100');
+            modal.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 200);
+        }
+    </script>
+</body>
+</html>

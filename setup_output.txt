@@ -1,0 +1,32 @@
+OUT:
+I, [2026-06-27T02:21:33.272409 #81]  INFO -- : Oj JSON serializer initialized with :compat mode
+I, [2026-06-27T02:21:33.272666 #81]  INFO -- : OpenTelemetry tracing is disabled (OTEL_TRACES_ENABLED != true)
+I, [2026-06-27T02:21:35.683872 #81]  INFO -- : 🔧 BMS INIT: Initializing BMS email provider
+W, [2026-06-27T02:21:35.722874 #81]  WARN -- : ⚠️  BMS INIT: BMS_API_SECRET not found in GlobalConfig or ENV. BMS email provider will not be available.
+I, [2026-06-27T02:21:35.722934 #81]  INFO -- : 🔧 BMS INIT: BMS provider initialization complete
+I, [2026-06-27T02:21:35.723158 #81]  INFO -- : ContactCompanyListener registered successfully
+I, [2026-06-27T02:21:35.723327 #81]  INFO -- : EvoFlow listeners registered (contact, conversation, message, pipeline)
+I, [2026-06-27T02:21:35.723416 #81]  INFO -- : [rake ip_lookup:setup] IP_LOOKUP_API_KEY empty. Skipping geoip database setup
+I, [2026-06-27T02:21:35.848895 #81]  INFO -- : 📧 MAILER CONFIG: Using SMTP/Sendmail delivery method (MAILER_TYPE=smtp)
+
+ERR:
+[sudo] password for administrator: /gems/ruby/3.4.0/gems/activemodel-7.1.5.1/lib/active_model/attribute_methods.rb:511:in 'ActiveModel::AttributeMethods#method_missing': undefined method 'password=' for an instance of User (NoMethodError)
+	from /gems/ruby/3.4.0/gems/activerecord-7.1.5.1/lib/active_record/attribute_methods.rb:499:in 'ActiveRecord::AttributeMethods#method_missing'
+	from /tmp/setup_crm.rb:4:in '<main>'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/commands/runner/runner_command.rb:41:in 'Kernel.load'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/commands/runner/runner_command.rb:41:in 'block in Rails::Command::RunnerCommand#perform'
+	from /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/execution_wrapper.rb:92:in 'ActiveSupport::ExecutionWrapper.wrap'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/commands/runner/runner_command.rb:40:in 'Rails::Command::RunnerCommand#perform'
+	from /gems/ruby/3.4.0/gems/thor-1.3.1/lib/thor/command.rb:28:in 'Thor::Command#run'
+	from /gems/ruby/3.4.0/gems/thor-1.3.1/lib/thor/invocation.rb:127:in 'Thor::Invocation#invoke_command'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/command/base.rb:178:in 'Rails::Command::Base#invoke_command'
+	from /gems/ruby/3.4.0/gems/thor-1.3.1/lib/thor.rb:527:in 'Thor.dispatch'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/command/base.rb:73:in 'Rails::Command::Base.perform'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/command.rb:71:in 'block in Rails::Command.invoke'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/command.rb:149:in 'Rails::Command.with_argv'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/command.rb:69:in 'Rails::Command.invoke'
+	from /gems/ruby/3.4.0/gems/railties-7.1.5.1/lib/rails/commands.rb:18:in '<main>'
+	from /usr/local/lib/ruby/3.4.0/bundled_gems.rb:82:in 'Kernel.require'
+	from /usr/local/lib/ruby/3.4.0/bundled_gems.rb:82:in 'block (2 levels) in Kernel#replace_require'
+	from /gems/ruby/3.4.0/gems/bootsnap-1.16.0/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:32:in 'Kernel#require'
+	from bin/rails:4:in '<main>'

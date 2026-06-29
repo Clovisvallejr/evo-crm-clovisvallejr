@@ -1,0 +1,99 @@
+# Override para rodar CRM de TESTE em paralelo com o original
+# Portas mapeadas para evitar conflito com CRM_Conversacional-V1
+#
+# Uso: docker-compose -p imperio-crm-test -f docker-compose.yml -f docker-compose.override.yml up -d
+
+services:
+  # ---------------------------------------------------------------------------
+  # Frontend (React/Nginx) - Porta 5174 no host
+  # ---------------------------------------------------------------------------
+  evo-frontend:
+    ports:
+      - "5174:80"
+    environment:
+      # URLs públicas que o browser usa (devem bater com as portas do host)
+      VITE_API_URL: http://localhost:3002
+      VITE_AUTH_API_URL: http://localhost:3003
+      VITE_WS_URL: http://localhost:3002
+      VITE_EVOAI_API_URL: http://localhost:5556
+      VITE_AGENT_PROCESSOR_URL: http://localhost:8001
+
+  # ---------------------------------------------------------------------------
+  # Auth Service (Rails) - Porta 3003 no host
+  # ---------------------------------------------------------------------------
+  evo-auth:
+    ports:
+      - "3003:3001"
+    environment:
+      FRONTEND_URL: http://localhost:5174
+      AUTH_SERVICE_URL: http://localhost:3003
+
+  # ---------------------------------------------------------------------------
+  # CRM Service (Rails) - Porta 3002 no host
+  # ---------------------------------------------------------------------------
+  evo-crm:
+    ports:
+      - "3002:3000"
+    environment:
+      BACKEND_URL: http://localhost:3002
+      EVO_AUTH_SERVICE_URL: http://evo-auth:3001  # interno (service name)
+      EVO_AI_CORE_SERVICE_URL: http://evo-core:5555  # interno
+      BOT_RUNTIME_URL: http://evo-bot-runtime:8080  # interno
+      BOT_RUNTIME_POSTBACK_BASE_URL: http://evo-crm:3000  # interno
+    # CORS atualizado para incluir frontend de teste
+    # (O CORS_ORIGINS no .env deve incluir http://localhost:5174)
+
+  evo-crm-sidekiq:
+    environment:
+      EVO_AUTH_SERVICE_URL: http://evo-auth:3001
+      EVO_AI_CORE_SERVICE_URL: http://evo-core:5555
+      BOT_RUNTIME_URL: http://evo-bot-runtime:8080
+      BOT_RUNTIME_POSTBACK_BASE_URL: http://evo-crm:3000
+
+  # ---------------------------------------------------------------------------
+  # AI Core Service (Go) - Porta 5556 no host
+  # ---------------------------------------------------------------------------
+  evo-core:
+    ports:
+      - "5556:5555"
+    environment:
+      EVOLUTION_BASE_URL: http://evo-crm:3000
+      EVO_AUTH_BASE_URL: http://evo-auth:3001
+      AI_PROCESSOR_URL: http://evo-processor:8000
+
+  # ---------------------------------------------------------------------------
+  # Processor Service (Python/FastAPI) - Porta 8001 no host
+  # ---------------------------------------------------------------------------
+  evo-processor:
+    ports:
+      - "8001:8000"
+    environment:
+      EVO_AI_CRM_URL: http://evo-crm:3000
+      CORE_SERVICE_URL: http://evo-core:5555/api/v1
+      APP_URL: http://localhost:8001
+
+  # ---------------------------------------------------------------------------
+  # Bot Runtime (Go) - Porta 8081 no host
+  # ---------------------------------------------------------------------------
+  evo-bot-runtime:
+    ports:
+      - "8081:8080"
+    environment:
+      AI_PROCESSOR_URL: http://evo-processor:8000
+      BOT_RUNTIME_POSTBACK_BASE_URL: http://evo-crm:3000
+
+  # ---------------------------------------------------------------------------
+  # Infraestrutura - portas alternativas para não conflitar
+  # ---------------------------------------------------------------------------
+  postgres:
+    ports:
+      - "5433:5432"  # 5433 no host
+
+  redis:
+    ports:
+      - "6380:6379"  # 6380 no host
+
+  mailhog:
+    ports:
+      - "1026:1025"  # SMTP
+      - "8026:8025"  # UI

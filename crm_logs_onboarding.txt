@@ -1,0 +1,101 @@
+F, [2026-06-27T02:16:20.112772 #1] FATAL -- : [6d3d775e-9413-4abb-9056-5e110db894ca]   
+[6d3d775e-9413-4abb-9056-5e110db894ca] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[6d3d775e-9413-4abb-9056-5e110db894ca]   
+[6d3d775e-9413-4abb-9056-5e110db894ca] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[6d3d775e-9413-4abb-9056-5e110db894ca] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[6d3d775e-9413-4abb-9056-5e110db894ca] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[6d3d775e-9413-4abb-9056-5e110db894ca] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:17:37.675707 #1]  INFO -- : [d15afe03-57c1-4578-a042-7ec665f465e6] Started GET "/installation/onboarding" for 200.148.121.118 at 2026-06-27 02:17:37 +0000
+I, [2026-06-27T02:17:37.678526 #1]  INFO -- : [d15afe03-57c1-4578-a042-7ec665f465e6] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:17:37.679820 #1]  INFO -- : [d15afe03-57c1-4578-a042-7ec665f465e6] Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 311)
+F, [2026-06-27T02:17:37.681221 #1] FATAL -- : [d15afe03-57c1-4578-a042-7ec665f465e6]   
+[d15afe03-57c1-4578-a042-7ec665f465e6] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[d15afe03-57c1-4578-a042-7ec665f465e6]   
+[d15afe03-57c1-4578-a042-7ec665f465e6] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[d15afe03-57c1-4578-a042-7ec665f465e6] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[d15afe03-57c1-4578-a042-7ec665f465e6] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[d15afe03-57c1-4578-a042-7ec665f465e6] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:17:41.912256 #1]  INFO -- : [40d4f065-087b-49f5-a300-f406e695411f] Started GET "/" for 200.148.121.118 at 2026-06-27 02:17:41 +0000
+I, [2026-06-27T02:17:41.915410 #1]  INFO -- : [40d4f065-087b-49f5-a300-f406e695411f] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:17:42.170502 #1]  INFO -- : [40d4f065-087b-49f5-a300-f406e695411f] Redirected to https://imperiocrm.com.br/installation/onboarding
+I, [2026-06-27T02:17:42.170742 #1]  INFO -- : [40d4f065-087b-49f5-a300-f406e695411f] Filter chain halted as :ensure_installation_onboarding rendered or redirected
+I, [2026-06-27T02:17:42.170983 #1]  INFO -- : [40d4f065-087b-49f5-a300-f406e695411f] Completed 302 Found in 255ms (ActiveRecord: 0.0ms | Allocations: 77154)
+I, [2026-06-27T02:17:42.353464 #1]  INFO -- : [cd6d50f0-00e8-4bff-8842-3c7728967bb8] Started GET "/installation/onboarding" for 200.148.121.118 at 2026-06-27 02:17:42 +0000
+I, [2026-06-27T02:17:42.357007 #1]  INFO -- : [cd6d50f0-00e8-4bff-8842-3c7728967bb8] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:17:42.358511 #1]  INFO -- : [cd6d50f0-00e8-4bff-8842-3c7728967bb8] Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 309)
+F, [2026-06-27T02:17:42.359684 #1] FATAL -- : [cd6d50f0-00e8-4bff-8842-3c7728967bb8]   
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8]   
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[cd6d50f0-00e8-4bff-8842-3c7728967bb8] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:17:58.442710 #1]  INFO -- : [21131871-8726-43ab-b80a-46da43183a27] Started GET "/" for 200.148.121.118 at 2026-06-27 02:17:58 +0000
+I, [2026-06-27T02:17:58.445863 #1]  INFO -- : [21131871-8726-43ab-b80a-46da43183a27] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:17:58.669946 #1]  INFO -- : [21131871-8726-43ab-b80a-46da43183a27] Redirected to https://imperiocrm.com.br/installation/onboarding
+I, [2026-06-27T02:17:58.670178 #1]  INFO -- : [21131871-8726-43ab-b80a-46da43183a27] Filter chain halted as :ensure_installation_onboarding rendered or redirected
+I, [2026-06-27T02:17:58.670481 #1]  INFO -- : [21131871-8726-43ab-b80a-46da43183a27] Completed 302 Found in 224ms (ActiveRecord: 0.0ms | Allocations: 77152)
+I, [2026-06-27T02:17:58.922939 #1]  INFO -- : [abf14de5-a39c-4c61-86a6-cc00c4abf110] Started GET "/installation/onboarding" for 200.148.121.118 at 2026-06-27 02:17:58 +0000
+I, [2026-06-27T02:17:58.925884 #1]  INFO -- : [abf14de5-a39c-4c61-86a6-cc00c4abf110] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:17:58.927091 #1]  INFO -- : [abf14de5-a39c-4c61-86a6-cc00c4abf110] Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 307)
+F, [2026-06-27T02:17:58.928178 #1] FATAL -- : [abf14de5-a39c-4c61-86a6-cc00c4abf110]   
+[abf14de5-a39c-4c61-86a6-cc00c4abf110] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[abf14de5-a39c-4c61-86a6-cc00c4abf110]   
+[abf14de5-a39c-4c61-86a6-cc00c4abf110] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[abf14de5-a39c-4c61-86a6-cc00c4abf110] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[abf14de5-a39c-4c61-86a6-cc00c4abf110] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[abf14de5-a39c-4c61-86a6-cc00c4abf110] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:18:02.660060 #1]  INFO -- : [34909b39-b837-43aa-9ce8-44b709f4854d] Started GET "/installation/onboarding" for 200.148.121.118 at 2026-06-27 02:18:02 +0000
+I, [2026-06-27T02:18:02.662610 #1]  INFO -- : [34909b39-b837-43aa-9ce8-44b709f4854d] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:18:02.663695 #1]  INFO -- : [34909b39-b837-43aa-9ce8-44b709f4854d] Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 307)
+F, [2026-06-27T02:18:02.664757 #1] FATAL -- : [34909b39-b837-43aa-9ce8-44b709f4854d]   
+[34909b39-b837-43aa-9ce8-44b709f4854d] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[34909b39-b837-43aa-9ce8-44b709f4854d]   
+[34909b39-b837-43aa-9ce8-44b709f4854d] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[34909b39-b837-43aa-9ce8-44b709f4854d] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[34909b39-b837-43aa-9ce8-44b709f4854d] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[34909b39-b837-43aa-9ce8-44b709f4854d] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:18:14.394465 #1]  INFO -- : [608b08fa-94bc-494e-a2f8-5428813ee111] Started GET "/" for 85.137.57.233 at 2026-06-27 02:18:14 +0000
+I, [2026-06-27T02:18:14.397841 #1]  INFO -- : [608b08fa-94bc-494e-a2f8-5428813ee111] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:18:14.734324 #1]  INFO -- : [608b08fa-94bc-494e-a2f8-5428813ee111] Redirected to https://imperiocrm.com.br/installation/onboarding
+I, [2026-06-27T02:18:14.734499 #1]  INFO -- : [608b08fa-94bc-494e-a2f8-5428813ee111] Filter chain halted as :ensure_installation_onboarding rendered or redirected
+I, [2026-06-27T02:18:14.734726 #1]  INFO -- : [608b08fa-94bc-494e-a2f8-5428813ee111] Completed 302 Found in 337ms (ActiveRecord: 0.0ms | Allocations: 77160)
+I, [2026-06-27T02:18:19.326601 #1]  INFO -- : [32491290-20fd-4b4b-b6cd-1ce037b1f235] Started GET "/" for 85.137.57.233 at 2026-06-27 02:18:19 +0000
+I, [2026-06-27T02:18:19.330392 #1]  INFO -- : [32491290-20fd-4b4b-b6cd-1ce037b1f235] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:18:19.564695 #1]  INFO -- : [32491290-20fd-4b4b-b6cd-1ce037b1f235] Redirected to https://imperiocrm.com.br/installation/onboarding
+I, [2026-06-27T02:18:19.564946 #1]  INFO -- : [32491290-20fd-4b4b-b6cd-1ce037b1f235] Filter chain halted as :ensure_installation_onboarding rendered or redirected
+I, [2026-06-27T02:18:19.565217 #1]  INFO -- : [32491290-20fd-4b4b-b6cd-1ce037b1f235] Completed 302 Found in 235ms (ActiveRecord: 0.0ms | Allocations: 77159)
+I, [2026-06-27T02:18:23.341724 #1]  INFO -- : [c0e4b90c-fd6e-45c3-8478-199e589362dd] Started GET "/installation/onboarding" for 85.137.57.233 at 2026-06-27 02:18:23 +0000
+I, [2026-06-27T02:18:23.344561 #1]  INFO -- : [c0e4b90c-fd6e-45c3-8478-199e589362dd] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:18:23.347204 #1]  INFO -- : [c0e4b90c-fd6e-45c3-8478-199e589362dd] Completed 406 Not Acceptable in 2ms (ActiveRecord: 0.0ms | Allocations: 309)
+F, [2026-06-27T02:18:23.348845 #1] FATAL -- : [c0e4b90c-fd6e-45c3-8478-199e589362dd]   
+[c0e4b90c-fd6e-45c3-8478-199e589362dd] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[c0e4b90c-fd6e-45c3-8478-199e589362dd]   
+[c0e4b90c-fd6e-45c3-8478-199e589362dd] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[c0e4b90c-fd6e-45c3-8478-199e589362dd] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[c0e4b90c-fd6e-45c3-8478-199e589362dd] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[c0e4b90c-fd6e-45c3-8478-199e589362dd] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+I, [2026-06-27T02:18:32.091180 #1]  INFO -- : [fa0da69d-c3d2-4459-90b1-1c2ae0235593] Started GET "/" for 200.148.121.118 at 2026-06-27 02:18:32 +0000
+I, [2026-06-27T02:18:32.094961 #1]  INFO -- : [fa0da69d-c3d2-4459-90b1-1c2ae0235593] Processing by DashboardController#index as HTML
+I, [2026-06-27T02:18:32.358234 #1]  INFO -- : [fa0da69d-c3d2-4459-90b1-1c2ae0235593] Redirected to https://imperiocrm.com.br/installation/onboarding
+I, [2026-06-27T02:18:32.358466 #1]  INFO -- : [fa0da69d-c3d2-4459-90b1-1c2ae0235593] Filter chain halted as :ensure_installation_onboarding rendered or redirected
+I, [2026-06-27T02:18:32.358711 #1]  INFO -- : [fa0da69d-c3d2-4459-90b1-1c2ae0235593] Completed 302 Found in 264ms (ActiveRecord: 0.0ms | Allocations: 77152)
+I, [2026-06-27T02:18:32.526951 #1]  INFO -- : [419a6afa-1beb-4b26-a06c-6934e67f77df] Started GET "/installation/onboarding" for 200.148.121.118 at 2026-06-27 02:18:32 +0000
+I, [2026-06-27T02:18:32.530855 #1]  INFO -- : [419a6afa-1beb-4b26-a06c-6934e67f77df] Processing by Installation::OnboardingController#index as HTML
+I, [2026-06-27T02:18:32.532528 #1]  INFO -- : [419a6afa-1beb-4b26-a06c-6934e67f77df] Completed 406 Not Acceptable in 1ms (ActiveRecord: 0.0ms | Allocations: 307)
+F, [2026-06-27T02:18:32.534097 #1] FATAL -- : [419a6afa-1beb-4b26-a06c-6934e67f77df]   
+[419a6afa-1beb-4b26-a06c-6934e67f77df] ActionController::MissingExactTemplate (Installation::OnboardingController#index is missing a template for request formats: text/html):
+[419a6afa-1beb-4b26-a06c-6934e67f77df]   
+[419a6afa-1beb-4b26-a06c-6934e67f77df] app/controllers/concerns/request_exception_handler.rb:11:in 'RequestExceptionHandler#handle_with_exception'
+[419a6afa-1beb-4b26-a06c-6934e67f77df] app/controllers/concerns/switch_locale.rb:24:in 'SwitchLocale#set_locale'
+[419a6afa-1beb-4b26-a06c-6934e67f77df] app/controllers/concerns/switch_locale.rb:12:in 'SwitchLocale#switch_locale'
+[419a6afa-1beb-4b26-a06c-6934e67f77df] app/middleware/facebook_webhook_logger.rb:81:in 'FacebookWebhookLogger#call'
+
+[sudo] password for administrator: Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
+Passing 'call' command to redis as is; blind passthrough has been deprecated and will be removed in redis-namespace 2.0 (at /gems/ruby/3.4.0/gems/activesupport-7.1.5.1/lib/active_support/cache/redis_cache_store.rb:454:in 'block (2 levels) in ActiveSupport::Cache::RedisCacheStore#change_counter')
