@@ -1,6 +1,6 @@
 import { NavLink, Outlet, Navigate, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/hooks/useLanguage';
-import { Mail, MailOpen, HardDrive, KeyRound, MessageSquare, Sparkles, Puzzle, Globe, Cable } from 'lucide-react';
+import { Mail, MailOpen, HardDrive, KeyRound, MessageSquare, Sparkles, Puzzle, Globe, Cable, DatabaseBackup } from 'lucide-react';
 
 const navItems = [
   { key: 'email', path: '/settings/admin/email', icon: Mail },
@@ -12,6 +12,7 @@ const navItems = [
   { key: 'evolutionHub', path: '/settings/admin/evolution-hub', icon: Cable },
   { key: 'inboundEmail', path: '/settings/admin/inbound-email', icon: MailOpen },
   { key: 'frontendRuntime', path: '/settings/admin/frontend-runtime', icon: Globe },
+  { key: 'backup', path: '/settings/admin/backup', icon: DatabaseBackup },
 ] as const;
 
 export default function AdminSettingsLayout() {

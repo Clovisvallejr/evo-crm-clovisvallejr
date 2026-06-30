@@ -94,6 +94,7 @@ const IntegrationsConfig = React.lazy(() => import('@/pages/Admin/Settings/Integ
 const EvolutionHubConfig = React.lazy(() => import('@/pages/Admin/Settings/EvolutionHubConfig'));
 const InboundEmailConfig = React.lazy(() => import('@/pages/Admin/Settings/InboundEmailConfig'));
 const FrontendRuntimeConfig = React.lazy(() => import('@/pages/Admin/Settings/FrontendRuntimeConfig'));
+const BackupConfig = React.lazy(() => import('@/pages/Admin/Settings/BackupConfig'));
 
 // Página de tutoriais
 import Tutorials from '@/pages/Customer/Tutorials';
@@ -1487,6 +1488,14 @@ const AppRouter = () => {
               element={
                 <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" /></div>}>
                   <FrontendRuntimeConfig />
+                </Suspense>
+              }
+            />
+            <Route
+              path="backup"
+              element={
+                <Suspense fallback={<div className="flex items-center justify-center h-full"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" /></div>}>
+                  <BackupConfig />
                 </Suspense>
               }
             />

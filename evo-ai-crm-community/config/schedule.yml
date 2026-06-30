@@ -81,3 +81,10 @@ automation_rule_runs_cleanup_job:
   cron: '45 3 * * *'
   class: 'AutomationRuleRunsCleanupJob'
   queue: low
+
+# executed every 5 minutes to check if backup should be run
+scheduled_backup_worker_job:
+  cron: '*/5 * * * *'
+  class: 'ScheduledBackupWorker'
+  queue: scheduled_jobs
+

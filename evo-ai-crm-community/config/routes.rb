@@ -33,12 +33,21 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: 'json' } do
 
-    namespace :v1 do
+      namespace :v1 do
       namespace :admin do
         get 'app_configs/:config_type', to: 'app_configs#show', as: :app_config
         post 'app_configs/:config_type', to: 'app_configs#create', as: :app_configs
         post 'app_configs/:config_type/test_connection', to: 'app_configs#test_connection', as: :test_app_config_connection
         delete 'app_configs/:config_type', to: 'app_configs#destroy', as: :destroy_app_config
+        
+        resources :backups, only: [:index, :create, :destroy] do
+          collection do
+            post :schedule
+          end
+          member do
+            get :download
+          end
+        end
       end
 
       resource :global_config, controller: 'global_config', only: [:show]

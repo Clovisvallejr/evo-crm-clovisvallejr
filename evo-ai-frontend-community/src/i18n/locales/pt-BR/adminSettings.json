@@ -9,7 +9,8 @@
     "integrations": "Integracoes",
     "evolutionHub": "Evo Hub",
     "inboundEmail": "E-mail de Entrada",
-    "frontendRuntime": "Frontend Runtime"
+    "frontendRuntime": "Frontend Runtime",
+    "backup": "Backup e Restauração"
   },
   "email": {
     "title": "Configuracao de E-mail",
