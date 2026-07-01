@@ -42,7 +42,7 @@ echo.
 echo Conectando na VPS (administrator@155.117.47.244)...
 echo OBS: Se pedir senha, digite a sua senha: tW%%CJS8$h*
 echo.
-ssh -t administrator@155.117.47.244 "sudo bash -c 'cd /root/imperio-crm/evo-crm-clovisvallejr_2 2>/dev/null || cd /root/evo-crm-community 2>/dev/null && sed -i s#FRONTEND_URL=http://localhost:5173#FRONTEND_URL=https://imperiocrm.com.br#g .env && sed -i s#BACKEND_URL=http://localhost:3000#BACKEND_URL=https://imperiocrm.com.br/crm#g .env && git pull origin main && docker compose build && docker compose run --rm evo-crm bundle exec rails db:migrate && docker compose run --rm evo-auth bundle exec rails db:seed && docker compose up -d'"
+ssh -t administrator@155.117.47.244 "sudo bash -c 'cd /root/imperio-crm/evo-crm-clovisvallejr_2 2>/dev/null || cd /root/evo-crm-community 2>/dev/null && git pull origin main && bash update_env.sh && docker compose build && docker compose run --rm evo-crm bundle exec rails db:migrate && docker compose run --rm evo-auth bundle exec rails db:seed && docker compose up -d'"
 
 echo.
 echo ============================================================
