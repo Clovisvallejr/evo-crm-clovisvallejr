@@ -5,6 +5,7 @@ account = Account.first || Account.create!(name: 'Império CRM')
 channel = Channel::Whatsapp.create!(
   account_id: account.id,
   phone_number: '+5511999999999',
+  api_key: 'imperio_evo_api_key_2026',
   provider: 'evolution_go',
   provider_config: {
     'instance_name' => 'Evolution',
