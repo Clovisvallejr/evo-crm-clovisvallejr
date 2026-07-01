@@ -242,6 +242,15 @@ Third-party attributions are documented in [NOTICE](./NOTICE).
 
 ---
 
+## Gerenciamento e Monitoramento 📊
+
+Para monitoramento contínuo da aplicação e gerenciamento de infraestrutura, as seguintes melhorias foram adicionadas à v2:
+
+- **Endpoint de Healthcheck (`/health`)**: Verifica a integridade da aplicação. É configurado automaticamente nos roteadores para validações de liveness.
+- **Script de Restauração de Backups (`restore_backup.sh`)**: Um script autônomo foi adicionado à raiz do projeto para permitir que arquivos `.tar.gz` criados pelo sistema de backup sejam restaurados facilmente na base Postgres, recriando também os arquivos de Storage associados.
+
+---
+
 <p align="center">
   Made by <a href="https://evolutionfoundation.com.br">Evolution Foundation</a> · © 2026
 </p>

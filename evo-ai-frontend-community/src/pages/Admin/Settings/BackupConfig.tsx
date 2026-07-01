@@ -30,6 +30,7 @@ export default function BackupConfig() {
   const [loading, setLoading] = useState(true);
   const [generating, setGenerating] = useState(false);
   const [savingConfig, setSavingConfig] = useState(false);
+  const [restoringId, setRestoringId] = useState<string | null>(null);
 
   useEffect(() => {
     fetchBackups();
@@ -72,6 +73,20 @@ export default function BackupConfig() {
       toast.error('Erro ao salvar configuração');
     } finally {
       setSavingConfig(false);
+    }
+  };
+
+  const restoreBackup = async (id: string) => {
+    if (!window.confirm('ATENÇÃO: A restauração apagará todos os dados inseridos após a criação deste backup. Tem certeza que deseja continuar?')) return;
+    
+    setRestoringId(id);
+    try {
+      await api.post(`/admin/backups/${id}/restore`);
+      toast.success('Restauração concluída com sucesso! É recomendável recarregar a página.');
+    } catch (error: any) {
+      toast.error(error.response?.data?.error || 'Erro ao restaurar backup');
+    } finally {
+      setRestoringId(null);
     }
   };
 
@@ -202,6 +217,16 @@ export default function BackupConfig() {
                     <TableCell>{formatDate(backup.created_at)}</TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => restoreBackup(backup.id)}
+                          disabled={restoringId === backup.id}
+                          title="Restaurar Backup"
+                          className="text-primary"
+                        >
+                          {restoringId === backup.id ? <Loader2 className="h-4 w-4 animate-spin" /> : <DatabaseBackup className="h-4 w-4" />}
+                        </Button>
                         <Button
                           variant="ghost"
                           size="sm"

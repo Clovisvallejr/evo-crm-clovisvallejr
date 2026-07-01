@@ -13,7 +13,14 @@ module EvolutionGoConcern
       subscribe: [
         'MESSAGE',
         'READ_RECEIPT',
-        'CONNECTION'
+        'CONNECTION',
+        'messages.upsert',
+        'contacts.upsert',
+        'chats.upsert',
+        'connection.update',
+        'contacts.set',
+        'chats.set',
+        'presence.update'
       ],
       webhookUrl: webhook_url_value
     }

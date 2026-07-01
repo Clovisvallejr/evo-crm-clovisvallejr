@@ -68,6 +68,23 @@ class Api::V1::Admin::BackupsController < Api::V1::Admin::BaseController
     end
   end
 
+  def restore
+    backup_id = params[:id]
+    safe_filename = File.basename(backup_id)
+    file_path = Rails.root.join('storage', 'backups', safe_filename)
+
+    if File.exist?(file_path)
+      begin
+        RestoreService.new(safe_filename).perform
+        render json: { message: 'Backup restored successfully' }
+      rescue RestoreService::RestoreError => e
+        render json: { error: e.message }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: 'Backup not found' }, status: :not_found
+    end
+  end
+
   def destroy
     backup_id = params[:id]
     safe_filename = File.basename(backup_id)

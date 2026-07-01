@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/health/live', to: 'health#live'
+  get '/health', to: 'health#live'
   get '/health/ready', to: 'health#ready'
   get '/metrics', to: 'health#metrics'
   post '/api/v1/dynamic_oauth/validate_client', to: 'api/v1/dynamic_oauth#validate_dynamic_client'
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
           end
           member do
             get :download
+            post :restore
           end
         end
       end
@@ -775,6 +777,7 @@ Rails.application.routes.draw do
   # Enterprise / consumer plugins mount their routes through the plugin_loader
   # extension point. No-op in the community release — the registry is empty
   # unless a consumer gem registers a plugin. See EXTENSION_POINTS.md §3.
+  mount ActionCable.server => '/cable'
   EvoExtensionPoints::PluginLoader.draw_routes(self)
 
 end

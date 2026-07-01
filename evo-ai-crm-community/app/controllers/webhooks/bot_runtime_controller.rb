@@ -34,7 +34,8 @@ class Webhooks::BotRuntimeController < ActionController::API
     message = AgentBots::MessageCreator.new(agent_bot).create_bot_reply(
       content, conversation,
       content_type: content_type,
-      content_attributes: content_attributes
+      content_attributes: content_attributes,
+      attachments: build_attachments(params[:attachments])
     )
 
     if message
@@ -66,5 +67,44 @@ class Webhooks::BotRuntimeController < ActionController::API
     return nil unless agent_bot_inbox&.active?
 
     agent_bot_inbox.agent_bot
+  end
+
+  def build_attachments(attachments_params)
+    return nil if attachments_params.blank?
+    
+    parsed = if attachments_params.is_a?(String)
+               begin
+                 JSON.parse(attachments_params)
+               rescue JSON::ParserError
+                 return nil
+               end
+             else
+               attachments_params
+             end
+             
+    parsed = [parsed] if parsed.is_a?(Hash)
+    return nil unless parsed.is_a?(Array)
+
+    uploaded_files = []
+    
+    parsed.each do |att|
+      next unless att.is_a?(Hash) && att['url'].present?
+      
+      begin
+        tempfile = Down.download(att['url'], max_size: 20 * 1024 * 1024) # 20MB limit
+        filename = att['filename'] || tempfile.original_filename || "attachment-#{SecureRandom.hex(4)}"
+        content_type = att['mime_type'] || tempfile.content_type || 'application/octet-stream'
+        
+        uploaded_files << ActionDispatch::Http::UploadedFile.new(
+          tempfile: tempfile,
+          filename: filename,
+          type: content_type
+        )
+      rescue StandardError => e
+        Rails.logger.error "[BotRuntime::Postback] Failed to download attachment #{att['url']}: #{e.message}"
+      end
+    end
+    
+    uploaded_files.presence
   end
 end

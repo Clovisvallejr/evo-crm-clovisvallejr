@@ -25,6 +25,7 @@ module BotRuntime
         contact_id: stable_contact_id,
         message_id: @message.id.to_s,
         message_content: @message.content.to_s,
+        attachments: build_attachments,
         api_key: @agent_bot.api_key.to_s,
         outgoing_url: @agent_bot.outgoing_url.to_s,
         bot_config: build_bot_config,
@@ -92,6 +93,22 @@ module BotRuntime
     def stable_contact_id
       digest = Digest::SHA256.digest(@conversation.contact_id.to_s)
       digest.unpack1('Q>') & 0x7FFFFFFFFFFFFFFF
+    end
+
+    def build_attachments
+      return [] unless @message.attachments.present?
+
+      @message.attachments.map do |attachment|
+        {
+          id: attachment.id,
+          file_type: attachment.file_type,
+          data_url: attachment.download_url,
+          mime_type: attachment.file.content_type
+        }.compact
+      end
+    rescue StandardError => e
+      Rails.logger.error "[BotRuntime::DelegationService] Error building attachments: #{e.message}"
+      []
     end
   end
 end

@@ -162,8 +162,66 @@ class Whatsapp::Providers::EvolutionGoService < Whatsapp::Providers::BaseService
   end
 
   def subscribe_to_webhooks
-    # Evolution Go API webhook subscription if needed
-    Rails.logger.info 'Evolution Go API webhook subscription not implemented'
+    backend_url = ENV['BACKEND_URL'].presence || GlobalConfigService.load('BACKEND_URL', nil).to_s.strip
+    return if backend_url.blank?
+
+    webhook_url_value = "#{backend_url.chomp('/')}/webhooks/whatsapp/evolution_go"
+    webhook_endpoint = "#{api_base_path}/webhook/set/#{instance_name}"
+
+    # Verify if already subscribed
+    begin
+      check_response = HTTParty.get(
+        "#{api_base_path}/webhook/find/#{instance_name}",
+        headers: api_headers,
+        timeout: 10
+      )
+      
+      if check_response.success?
+        parsed = check_response.parsed_response
+        current_url = parsed.is_a?(Hash) ? (parsed['url'] || parsed.dig('webhook', 'url')) : nil
+        if current_url == webhook_url_value
+          # We might still want to update it if the events are incomplete, but let's just force update it for now
+          Rails.logger.info "Evolution Go API: Webhook URL already matches #{webhook_url_value}. Forcing update for missing events."
+        end
+      end
+    rescue StandardError => e
+      Rails.logger.warn "Evolution Go API: Failed to check current webhook: #{e.message}"
+    end
+
+    body = {
+      webhook: {
+        url: webhook_url_value,
+        byEvents: false,
+        base64: false,
+        events: [
+          'MESSAGE',
+          'READ_RECEIPT',
+          'CONNECTION',
+          'messages.upsert',
+          'contacts.upsert',
+          'chats.upsert',
+          'connection.update',
+          'contacts.set',
+          'chats.set',
+          'presence.update'
+        ]
+      }
+    }
+
+    Rails.logger.info "Evolution Go API: Setting webhook for instance #{instance_name} to #{webhook_url_value}"
+
+    begin
+      response = HTTParty.post(
+        webhook_endpoint,
+        headers: api_headers,
+        body: body.to_json,
+        timeout: 15
+      )
+
+      Rails.logger.info "Evolution Go API: Webhook set response: #{response.code} - #{response.body}"
+    rescue StandardError => e
+      Rails.logger.error "Evolution Go API: Failed to set webhook: #{e.message}"
+    end
   end
 
   def unsubscribe_from_webhooks

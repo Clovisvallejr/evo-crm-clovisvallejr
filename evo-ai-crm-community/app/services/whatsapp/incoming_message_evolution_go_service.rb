@@ -144,6 +144,19 @@ class Whatsapp::IncomingMessageEvolutionGoService < Whatsapp::IncomingMessageBas
       return
     end
 
+    Rails.logger.info "Evolution Go API: Triggering webhook sync and contact/chat fetch"
+    
+    # Force Webhook update to ensure we have all required events subscribed
+    begin
+      channel.provider_service&.subscribe_to_webhooks
+    rescue StandardError => e
+      Rails.logger.error "Evolution Go API: Failed to subscribe webhooks on PairSuccess: #{e.message}"
+    end
+
+    # Fetch contacts and chats to backfill CRM with what's on the device
+    EvolutionGo::FetchContactsJob.perform_later(channel.id)
+    EvolutionGo::FetchChatsJob.perform_later(channel.id)
+
     Rails.logger.info "Evolution Go API: Fetching avatar for phone #{phone_number}"
 
     # Fetch and update inbox avatar

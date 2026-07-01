@@ -1,0 +1,1 @@
+{"subscribe":["MESSAGE","READ_RECEIPT","CONNECTION","messages.upsert","contacts.upsert","chats.upsert","connection.update","contacts.set","chats.set","presence.update"],"webhookUrl":"https://imperiocrm.com.br/webhooks/whatsapp/evolution_go"}
